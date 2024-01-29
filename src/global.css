@@ -1,0 +1,30 @@
+/* color code = {
+  one: #646cff,
+  two: #747bff,
+  three: #1a1a1a,
+  four: #213547,
+  five: #f9f9f9,
+} */
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f9fafc;
+  margin: auto;
+  max-width: 1200px;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
