@@ -1,5 +1,5 @@
 // hooks
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 // services
 import api from "../services/config";
@@ -29,4 +29,11 @@ function ProductsProvider({ children }) {
   );
 }
 
+// custom hook
+const useProducts = () => {
+  const products = useContext(ProductContext);
+  return products;
+};
+
 export default ProductsProvider;
+export { useProducts };
