@@ -1,5 +1,5 @@
 // hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContext";
 
 // library
@@ -11,16 +11,31 @@ import { FaListUl } from "react-icons/fa";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 
+// helper
+import { shortenText } from "../helper/helper";
+
 // styles
 import styles from "./ProductsPage.module.css";
 
 function ProductsPage() {
   const products = useProducts();
   // console.log(products);
+
+  const [displayed, setDisplayed] = useState([]);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    setDisplayed(products);
+  }, [products]);
 
   const searchHandler = () => {
     console.log(search.trim());
+    console.log(products);
+    const newProducts = products.filter((product) => {
+      const findText = shortenText(product.title);
+      return findText.toLowerCase().includes(search.trim());
+    });
+    console.log(newProducts);
   };
 
   const categoryHandler = (event) => {
@@ -49,8 +64,8 @@ function ProductsPage() {
       </div>
       <div className={styles.container}>
         <div className={styles.products}>
-          {!products.length && <Loader />}
-          {products.map((product) => (
+          {!displayed.length && <Loader />}
+          {displayed.map((product) => (
             <Card key={product.id} data={product} />
           ))}
         </div>
