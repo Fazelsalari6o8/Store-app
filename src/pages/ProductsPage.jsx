@@ -8,11 +8,11 @@ import { ImSearch } from "react-icons/im";
 import { FaListUl } from "react-icons/fa";
 
 // components
-import Card from "../components/Card";
-import Loader from "../components/Loader";
+import Card from "../components/Card.jsx";
+import Loader from "../components/Loader.jsx";
 
 // helper
-import { shortenText } from "../helper/helper";
+import { filterProducts, searchProducts } from "../helper/helper.js";
 
 // styles
 import styles from "./ProductsPage.module.css";
@@ -23,27 +23,28 @@ function ProductsPage() {
 
   const [displayed, setDisplayed] = useState([]);
   const [search, setSearch] = useState("");
+  const [query, setQuery] = useState({});
 
   useEffect(() => {
     setDisplayed(products);
   }, [products]);
 
+  useEffect(() => {
+    let finalProducts = searchProducts(products, query.search);
+    finalProducts = filterProducts(finalProducts, query.category);
+    setDisplayed(finalProducts);
+  }, [query]);
+
   const searchHandler = () => {
-    console.log(search.trim());
-    console.log(products);
-    const newProducts = products.filter((product) => {
-      const findText = shortenText(product.title);
-      return findText.toLowerCase().includes(search.trim());
-    });
-    console.log(newProducts);
+    setQuery((query) => ({ ...query, search: search.trim() }));
   };
 
   const categoryHandler = (event) => {
     const { tagName } = event.target;
     const category = event.target.innerText.toLowerCase();
 
-    if (tagName === "LI") return;
-    console.log(category);
+    if (tagName !== "LI") return;
+    setQuery((query) => ({ ...query, category }));
   };
 
   return (
