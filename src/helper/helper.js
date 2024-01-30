@@ -32,4 +32,23 @@ const createQueryObject = (currentQuery, newQuery) => {
   return { ...currentQuery, ...newQuery };
 };
 
-export { shortenText, searchProducts, filterProducts, createQueryObject };
+const getInitialQuery = (searchParams, setSearch) => {
+  const query = {};
+  const category = searchParams.get("category");
+  const search = searchParams.get("search");
+
+  if (category) query.category = category;
+  if (search) {
+    query.search = search;
+  }
+
+  return query;
+};
+
+export {
+  shortenText,
+  searchProducts,
+  filterProducts,
+  createQueryObject,
+  getInitialQuery,
+};
