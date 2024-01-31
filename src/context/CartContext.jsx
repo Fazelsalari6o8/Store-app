@@ -3,7 +3,9 @@ import { createContext, useContext, useReducer } from "react";
 
 const initialState = {};
 
-const reducer = () => {};
+const reducer = (state, action) => {
+  console.log(action);
+};
 
 // context
 const CartContext = createContext();
@@ -11,13 +13,18 @@ const CartContext = createContext();
 function CartProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  return <CartContext.Provider value={state}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={{ state, dispatch }}>
+      {children}
+    </CartContext.Provider>
+  );
 }
 
 // custom hook
 const useCart = () => {
-  const cart = useContext(CartContext);
-  return cart;
+  const { state, dispatch } = useContext(CartContext);
+  return [state, dispatch];
 };
 
 export default CartProvider;
+export { useCart };
