@@ -9,18 +9,21 @@ import PageNotFound from "./pages/404.jsx";
 
 // context provider
 import ProductsProvider from "./context/ProductContext.jsx";
+import CartProvider from "./context/CartContext.jsx";
 
 function App() {
   return (
-    <ProductsProvider>
-      <Routes>
-        <Route index element={<Navigate to="/products" />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/products/:id" element={<DetailsPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/*" element={<PageNotFound />} />
-      </Routes>
-    </ProductsProvider>
+    <CartProvider>
+      <ProductsProvider>
+        <Routes>
+          <Route index element={<Navigate to="/products" />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/:id" element={<DetailsPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/*" element={<PageNotFound />} />
+        </Routes>
+      </ProductsProvider>
+    </CartProvider>
   );
 }
 
