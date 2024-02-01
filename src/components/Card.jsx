@@ -18,7 +18,7 @@ function Card({ data }) {
   const [state, dispatch] = useCart();
 
   const clickHandler = () => {
-    dispatch({ type: "add", payload: data });
+    dispatch({ type: "ADD_ITEM", payload: data });
   };
 
   return (
