@@ -4,6 +4,7 @@ import { useCart } from "../context/CartContext.jsx";
 
 // components
 import BasketCard from "../components/BasketCard.jsx";
+import BasketSidebar from "../components/BasketSidebar.jsx";
 
 // styles
 import styles from "./CheckoutPage.module.css";
@@ -16,16 +17,24 @@ function CheckoutPage() {
   };
 
   return (
-    <div className={styles.checkout}>
-      <div>
-        {state.selectedItems.map((product) => (
-          <BasketCard
-            key={product.id}
-            data={product}
-            clickHandler={clickHandler}
-          />
-        ))}
-      </div>
+    <div className={styles.container}>
+      {/* {!state.itemsCounter && <h2 className={styles.empty}>Empty</h2>} */}
+      {!state.itemsCounter ? (
+        <h2 className={styles.empty}>Empty</h2>
+      ) : (
+        <>
+          <BasketSidebar state={state} clickHandler={clickHandler} />
+          <div className={styles.products}>
+            {state.selectedItems.map((product) => (
+              <BasketCard
+                key={product.id}
+                data={product}
+                clickHandler={clickHandler}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

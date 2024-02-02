@@ -1,3 +1,17 @@
-.checkout {
+.container {
   min-height: 80dvh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px;
+  position: relative;
+}
+
+.empty {
+  margin: 0 10px;
+  padding: 0 20px;
+}
+
+.products {
+  width: 100%;
 }
