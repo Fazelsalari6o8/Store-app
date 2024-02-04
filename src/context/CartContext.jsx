@@ -7,11 +7,16 @@ import { sumProducts } from "../helper/helper.js";
 // get data from localStorage:
 const savedData = JSON.parse(localStorage.getItem("basketCart"));
 
+const selectedItems = savedData ? savedData.selectedItems : [];
+const itemsCounter = savedData ? savedData.itemsCounter : 0;
+const totalPrice = savedData ? savedData.totalPrice : 0;
+const checkout = savedData ? savedData.checkout : false;
+
 const initialState = {
-  selectedItems: savedData.selectedItems || [],
-  itemsCounter: savedData.itemsCounter || 0,
-  totalPrice: savedData.totalPrice || 0,
-  checkout: false,
+  selectedItems,
+  itemsCounter,
+  totalPrice,
+  checkout,
 };
 
 const reducer = (state, action) => {
