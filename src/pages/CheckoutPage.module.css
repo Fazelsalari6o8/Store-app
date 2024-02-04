@@ -15,3 +15,16 @@
 .products {
   width: 100%;
 }
+
+/* Responsive */
+@media (max-width: 792px) {
+  .container {
+    flex-direction: column-reverse;
+    /* align-items: center; */
+    justify-content: start;
+  }
+
+  .products {
+    margin-bottom: 60px;
+  }
+}

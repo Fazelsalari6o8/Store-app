@@ -10,7 +10,6 @@ import styles from "./BasketCard.module.css";
 
 function BasketCard({ data, clickHandler }) {
   const { image, title, price, quantity } = data;
-  console.log(data);
   return (
     <div className={styles.card}>
       <img src={image} alt={shortenText(title)} />

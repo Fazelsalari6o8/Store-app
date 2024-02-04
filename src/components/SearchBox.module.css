@@ -24,3 +24,19 @@
   vertical-align: middle;
   transition: all 0.2s ease-in;
 }
+
+/* Responsive */
+@media (max-width: 420px) {
+  .search {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .search input {
+    width: 75%;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+}

@@ -78,3 +78,24 @@
     opacity: 1;
   }
 }
+
+/* Responsive */
+@media (max-width: 580px) {
+  .header {
+    width: 95%;
+    margin: 0 auto 60px;
+  }
+  .footer {
+    width: 95%;
+    margin: 80px auto 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer {
+    font-size: 0.8rem;
+  }
+  .footer span {
+    display: none;
+  }
+}
