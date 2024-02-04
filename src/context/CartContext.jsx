@@ -4,10 +4,13 @@ import { createContext, useContext, useReducer } from "react";
 // helper
 import { sumProducts } from "../helper/helper.js";
 
+// get data from localStorage:
+const savedData = JSON.parse(localStorage.getItem("basketCart"));
+
 const initialState = {
-  selectedItems: [],
-  itemsCounter: 0,
-  totalPrice: 0,
+  selectedItems: savedData.selectedItems || [],
+  itemsCounter: savedData.itemsCounter || 0,
+  totalPrice: savedData.totalPrice || 0,
   checkout: false,
 };
 
@@ -24,6 +27,17 @@ const reducer = (state, action) => {
       };
 
     case "REMOVE_ITEM":
+      if (state.itemsCounter === 1) {
+        localStorage.setItem(
+          "basketCart",
+          JSON.stringify({
+            selectedItems: [],
+            quantity: 0,
+            totalPrice: 0,
+            checkout: true,
+          })
+        );
+      }
       const newSelectedItems = state.selectedItems.filter(
         (item) => item.id !== action.payload.id
       );
@@ -57,6 +71,15 @@ const reducer = (state, action) => {
       };
 
     case "CHECKOUT":
+      localStorage.setItem(
+        "basketCart",
+        JSON.stringify({
+          selectedItems: [],
+          quantity: 0,
+          totalPrice: 0,
+          checkout: true,
+        })
+      );
       return {
         selectedItems: [],
         quantity: 0,
@@ -85,6 +108,9 @@ function CartProvider({ children }) {
 // custom hook
 const useCart = () => {
   const { state, dispatch } = useContext(CartContext);
+  // save data to localStorage:
+  state.selectedItems.length &&
+    localStorage.setItem("basketCart", JSON.stringify(state));
   return [state, dispatch];
 };
 
