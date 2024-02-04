@@ -33,3 +33,11 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+/* Responsive */
+@media (max-width: 792px) {
+  .sidebar {
+    width: 95%;
+    margin: 0 auto;
+  }  
+}

@@ -43,3 +43,24 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+/* Responsive */
+@media (max-width: 792px) {
+  .info {
+    flex-direction: column;
+    width: max-content;
+  }
+}
+
+@media (max-width: 440px) {
+  .info {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .info {
+    font-size: 0.7rem;
+    margin: 0 5px;
+  }
+}

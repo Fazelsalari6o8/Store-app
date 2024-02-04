@@ -58,3 +58,32 @@
 .information a svg {
   margin-right: 10px;
 }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .information {
+    margin: 20px auto;
+  }
+  .description {
+    width: auto;
+  }
+}
+
+@media (max-width: 440px) {
+  .container img {
+    width: 90%;
+    margin: 10px auto;
+  }
+  .price {
+    display: flex;
+    flex-direction: column;
+  }
+  .price a {
+    width: max-content;
+    margin: 20px auto 0;
+  }
+}

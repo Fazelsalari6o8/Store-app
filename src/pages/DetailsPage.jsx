@@ -33,8 +33,8 @@ function DetailsPage() {
           <SiOpenproject />
           {productDetails.category}
         </p>
-        <div>
-          <span className={styles.price}>
+        <div className={styles.price}>
+          <span>
             <IoMdPricetag />
             {productDetails.price} $
           </span>

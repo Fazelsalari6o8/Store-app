@@ -38,3 +38,48 @@
   color: #fe5d42;
   border-radius: 10px;
 }
+
+/* Responsive */
+@media (max-width: 580px) {
+  .sidebar {
+    width: 200px;
+    margin: 10px auto;
+  }
+  .sidebar div {
+    width: 90%;
+    font-size: 0.9rem;
+  }
+  .sidebar li {
+    font-size: 0.8rem;
+    width: max-content;
+  }
+}
+
+@media (max-width: 460px) {
+  .sidebar {
+    width: 40%;
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .sidebar {
+    position: static;
+    width: 90%;
+  }
+  .sidebar div {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+  .sidebar ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: scroll;
+  }
+  .sidebar li {
+    font-size: 1rem;
+    margin: 0 5px;
+    text-wrap: nowrap;
+  }
+}
